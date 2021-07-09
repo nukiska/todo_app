@@ -1,2 +1,2 @@
 # todo_app
-ToDo List Django Application with User Profile
+ToDo List Django Application with User Account
