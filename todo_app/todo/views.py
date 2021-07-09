@@ -18,8 +18,12 @@ class TaskList(ListView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = '__all__'
+    fields = ['title', 'description', 'completed', 'deadline']
     success_url = reverse_lazy('tasks')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(TaskCreate, self).form_valid(form)
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
@@ -29,7 +33,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskEdit(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = '__all__'
+    fields = ['title', 'description', 'completed', 'deadline']
     success_url = reverse_lazy('tasks')
 
 
