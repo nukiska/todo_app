@@ -1,6 +1,7 @@
-from django.contrib.auth.views import LoginView
-from django.shortcuts import render
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
 
-class UserLoginView(LoginView):
-    pass
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'registration/password_change.html'
+    success_url = reverse_lazy('tasks')
