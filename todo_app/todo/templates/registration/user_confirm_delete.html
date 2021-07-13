@@ -1,0 +1,7 @@
+<a href="{% url 'tasks' %}">Home</a>
+
+<form method="post">
+    {% csrf_token %}
+    <p>{{ request.user }}, are you sure that you want to delete your profile with all tasks?</p>
+    <input type="submit" value="Delete my profile">
+</form>

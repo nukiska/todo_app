@@ -1,8 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 
 from .models import Task
+
+
+class HomePageView(TemplateView):
+    template_name = 'index.html'
 
 
 class TaskList(LoginRequiredMixin, ListView):

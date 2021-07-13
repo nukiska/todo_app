@@ -1,9 +1,10 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, DeleteView
 
 
 class UserLoginView(LoginView):
@@ -30,3 +31,9 @@ class UserRegisterView(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(UserRegisterView, self).get(*args, **kwargs)
+
+
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'registration/user_confirm_delete.html'
+    success_url = reverse_lazy('index')
