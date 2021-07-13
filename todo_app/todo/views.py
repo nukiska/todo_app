@@ -1,3 +1,4 @@
+from django import http
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
@@ -39,13 +40,31 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     context_object_name = 'task'
 
+    def get_object(self):
+        task = super(TaskDetail, self).get_object()
+        if task.user != self.request.user:
+            raise http.Http404
+        return task
+
 
 class TaskEdit(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['title', 'description', 'completed', 'deadline']
     success_url = reverse_lazy('tasks')
 
+    def get_object(self):
+        task = super(TaskEdit, self).get_object()
+        if task.user != self.request.user:
+            raise http.Http404
+        return task
+
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
+
+    def get_object(self):
+        task = super(TaskDelete, self).get_object()
+        if task.user != self.request.user:
+            raise http.Http404
+        return task

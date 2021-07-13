@@ -1,3 +1,4 @@
+from django import http
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -38,3 +39,9 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'registration/user_confirm_delete.html'
     success_url = reverse_lazy('index')
+
+    def get_object(self):
+        profile = super(UserDeleteView, self).get_object()
+        if profile != self.request.user:
+            raise http.Http404
+        return profile
