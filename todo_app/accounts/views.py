@@ -1,5 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.shortcuts import redirect
@@ -33,7 +34,7 @@ class UserRegisterView(FormView):
         return super(UserRegisterView, self).get(*args, **kwargs)
 
 
-class UserDeleteView(DeleteView):
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'registration/user_confirm_delete.html'
     success_url = reverse_lazy('index')

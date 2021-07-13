@@ -1,9 +1,16 @@
-<p>Hello, {{ request.user }}!</p>
+<a href="{% url 'index' %}">Home Page</a>
+
+<p>{{ request.user|title }}'s To Do List</p>
 <a href="{% url 'password-change' %}">Change Password</a>
 <a href="{% url 'logout' %}">Logout</a>
 <a href="{% url 'delete-user' user.id %}">Delete User</a>
 
 <p><a href="{% url 'create-task' %}">Create Task</a></p>
+
+<form method="get">
+    <input type="text" name="search-area" placeholder="Search task...">
+    <input type="submit" value="Search">
+</form>
 
 <table>
     <tr>
