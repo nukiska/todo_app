@@ -7,7 +7,7 @@
     <a href="{% url 'logout' %}">Logout</a>
     <a href="{% url 'delete-user' user.id %}">Delete User</a>
 
-    <p>{{ request.user|title }}'s To Do List</p>
+    <h2>{{ request.user|title }}'s Task List</h2>
 
     <form method="get">
         <input type="text" name="searchbar" placeholder="Search task...">
@@ -31,7 +31,7 @@
                 <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
             </tr>
         {% empty %}
-            <h2>Empty list</h2>
+            <h3>Empty list</h3>
         {% endfor %}
     </table>
 
