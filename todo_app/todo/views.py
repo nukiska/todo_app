@@ -22,7 +22,7 @@ class TaskList(LoginRequiredMixin, ListView):
         search_task = self.request.GET.get('searchbar') or ''
         if search_task:
             context['tasks'] = context['tasks'].filter(title__icontains=search_task)
-
+        context['search_task'] = search_task
         return context
 
 
