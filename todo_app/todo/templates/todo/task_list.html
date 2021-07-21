@@ -5,7 +5,7 @@
     <div class="header-bar">
         <div>
             <h2>{{ request.user|title }}'s Task List</h2>
-            <h3>Contains <b style="color: red">{{ count }}</b> incomplete task{{ count|pluralize:"s" }}</h3>
+            <h3>Contains <b style="color: crimson">{{ count }}</b> incomplete task{{ count|pluralize:"s" }}</h3>
         </div>
         <div style="text-align: right">
             <p><a href="{% url 'index' %}">Home Page</a></p>
@@ -22,18 +22,27 @@
 
     <table>
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>Completed</th>
+            <th>Task</th>
+            <th>Deadline</th>
             <th></th>
         </tr>
         {% for task in tasks %}
-            <tr>
-                <td>{{ task.title }}</td>
-                <td><a href="{% url 'detail-task' task.id %}">Detail</a></td>
-                <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
-                <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
-            </tr>
+            {% if task.completed %}
+                <tr>
+                    <td class="complete"><a href="{% url 'edit-task' task.id %}">&#10003;</a></td>
+                    <td><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></td>
+                    <td>{{ task.deadline }}</td>
+                    <td class="delete_task"><a href="{% url 'delete-task' task.id %}">&#215;</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="incomplete"><a href="{% url 'edit-task' task.id %}">&#187;</a></td>
+                    <td><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></td>
+                    <td>{{ task.deadline|timeuntil }}</td>
+                    <td class="delete_task"><a href="{% url 'delete-task' task.id %}">&#215;</a></td>
+                </tr>
+            {% endif %}
         {% empty %}
             <h3>Empty list</h3>
         {% endfor %}

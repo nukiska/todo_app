@@ -4,22 +4,152 @@
         <div>
             <h2>Welcome to the Task List</h2>
         {% if request.user.is_authenticated %}
-                <h4>Hello, {{ request.user|title }}!</h4>
+                <h3 style="margin: 0; color: steelblue">Hello, {{ request.user|title }}!</h3>
+                <h4 style="margin-bottom: 0"><a href="{% url 'tasks' %}">&#8594; See your To Do List</a></h4>
             </div>
-            <div>
-                <a href="{% url 'tasks' %}">See your To Do List</a><br>
+
+            <div style="text-align: right;">
+                <p><a href="{% url 'logout' %}">Logout</a></p>
                 <p>
-                    <a href="{% url 'logout' %}">Logout</a><br>
                     <a href="{% url 'password-change' %}">Change Password</a><br>
-                    <a href="{% url 'delete-user' user.id %}">Delete User</a></p>
+                    <a href="{% url 'delete-user' user.id %}">Delete User</a>
+                </p>
             </div>
         {% else %}
             </div>
-            <div>
+
+            <div style="text-align: right;">
                 <p><a href="{% url 'login' %}">Login</a></p>
                 <p><a href="{% url 'register-user' %}">Register</a></p>
             </div>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum impedit ipsam minus molestias nam neque nobis quam quasi rem voluptas. Dolorum earum esse in labore laudantium praesentium qui quidem rem.</p>
+
+    <section>
+        <div class="hero">
+            <h2>How it all began?</h2>
+            <h4>With various motivations, me and a few other students signed up for the <a href="https://sdacademy.cz/" target="_blank"><u>SDA&nbsp;Academy</u></a> course,
+                where we wanted to learn the Python programming language from scratch.
+                This should bring us closer to the opportunity to get a job as a Junior Python Developer.
+            </h4>
+        </div>
+        <div class="timeline">
+            <ul>
+                <li>
+                    <div class="content">
+                        <h3>Python - basics</h3>
+                        <p>It really started from the beginning. We went through ones and zeros to the first
+                            computers. Several of us wrote the first line of code. Yippee! I gradually repeated the
+                            complete basics of Python, from variables and functions to conditions and loops.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>November 2020</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Software Testing and TDD</h3>
+                        <p>Software development also includes testing it. We explained the importance of testing and tried
+                            to write our own tests. No matter how great a programmer you are - you will always make mistakes.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>December 2020</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Python - intermediate</h3>
+                        <p>Some of us have discovered object-oriented programming and started asking: "What the hell is that?" It's a way to think about
+                            code and write it. Classes, instances, attributes and methods are no longer foreign words to us.
+                            Then came the decorators, generators, iterators, and we were ... yes, right there.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>January 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Algorithms and data structures</h3>
+                        <p>As with the recipe for cooking: it must be clear from each algorithm notation exactly what the
+                            computer should do. Recursion will scare me in a dream for a long time to come and probably
+                            I will never forget the sorting algorithm dance scenes.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>February 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Design patterns and good practices</h3>
+                        <p>IMPORT THIS. That's the main thing I need to know.</p>
+                    </div>
+                    <div class="time">
+                        <h4>February 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>SQL databases and their programming</h3>
+                        <p>A SQL query goes into a bar, walks up to two tables and asks: "Can I join you?"
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>March 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>HTML, CSS and JavaScript</h3>
+                        <p>One for all, all for one. Like three musketeers kind and friendly. Elegant with a refined style.
+                            What a wonderful world this Frontend is.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>April 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Backend technologies</h3>
+                        <p>Kitchen in full operation. I have learned about the raw materials. Now, I will learn to cook.
+                            With this unchained Django, it's a really wild ride.
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>May 2021</h4>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="content">
+                        <h3>Final project</h3>
+                        <p> In the end, my study efforts make sense and tangible results. Let's try my app and
+                            enjoy it!
+                        </p>
+                    </div>
+                    <div class="time">
+                        <h4>June 2021</h4>
+                    </div>
+                </li>
+                <div style="clear: both;"></div>
+            </ul>
+        </div>
+    </section>
+
+    <div class="footer-bar">
+            <h4 style="margin-top: 0"><a href="{% url 'index' %}">&#8594; Back to top</a></h4>
+    </div>
         {% endif %}
+
 {% endblock content %}
+
