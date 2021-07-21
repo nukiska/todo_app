@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a href="{% url 'tasks' %}">Go Back</a>
+     <div class="header-bar">
+        <h2>Create Task</h2>
+        <p><a href="{% url 'tasks' %}">Go Back</a></p>
+    </div>
 
     <form method="post">
         {% csrf_token %}
