@@ -4,21 +4,22 @@
         <div>
             <h2>Welcome to the Task List</h2>
         {% if request.user.is_authenticated %}
-            <h4>Hello, {{ request.user|title }}!</h4>
-        </div>
-        <div>
-            <a href="{% url 'tasks' %}">See your To Do List</a><br>
-            <p>
-                <a href="{% url 'logout' %}">Logout</a><br>
-                <a href="{% url 'password-change' %}">Change Password</a><br>
-                <a href="{% url 'delete-user' user.id %}">Delete User</a></p>
-        </div>
+                <h4>Hello, {{ request.user|title }}!</h4>
+            </div>
+            <div>
+                <a href="{% url 'tasks' %}">See your To Do List</a><br>
+                <p>
+                    <a href="{% url 'logout' %}">Logout</a><br>
+                    <a href="{% url 'password-change' %}">Change Password</a><br>
+                    <a href="{% url 'delete-user' user.id %}">Delete User</a></p>
+            </div>
         {% else %}
+            </div>
             <div>
                 <p><a href="{% url 'login' %}">Login</a></p>
                 <p><a href="{% url 'register-user' %}">Register</a></p>
             </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum impedit ipsam minus molestias nam neque nobis quam quasi rem voluptas. Dolorum earum esse in labore laudantium praesentium qui quidem rem.</p>
-        {% endif %}
     </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum impedit ipsam minus molestias nam neque nobis quam quasi rem voluptas. Dolorum earum esse in labore laudantium praesentium qui quidem rem.</p>
+        {% endif %}
 {% endblock content %}
