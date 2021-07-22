@@ -7,7 +7,7 @@
 
     <form method="post">
         {% csrf_token %}
-        <h3>{{ request.user|title }}, are you sure that you want to <b style="color: red"> delete your profile with all tasks?</b></h3>
+        <h3>{{ request.user|title }}, are you sure that you want to <b style="color: crimson"> delete your profile with all tasks?</b></h3>
         <input type="submit" value="Delete my profile">
     </form>
 {% endblock content %}

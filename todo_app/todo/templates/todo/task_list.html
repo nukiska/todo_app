@@ -13,39 +13,36 @@
         </div>
     </div>
 
-    <form method="get">
-        <input type="text" name="searchbar" placeholder="Search task...">
-        <input type="submit" value="Search">
-    </form>
+    <div id="search-add-wrapper">
+        <form method="get" style="margin-top:10px; display:flex;">
+            <input type="text" name="searchbar" placeholder="Search task...">
+            <input type="submit" value="Search">
+        </form>
+        <a id="add-task" href="{% url 'create-task' %}">&#43;</a>
+    </div>
 
-    <p><a href="{% url 'create-task' %}">Create Task</a></p>
-
-    <table>
-        <tr>
-            <th>Completed</th>
-            <th>Task</th>
-            <th>Deadline</th>
-            <th></th>
-        </tr>
+    <div class="task-list-wrapper">
         {% for task in tasks %}
+        <div class="task-wrapper">
             {% if task.completed %}
-                <tr>
-                    <td class="complete"><a href="{% url 'edit-task' task.id %}">&#10003;</a></td>
-                    <td><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></td>
-                    <td>{{ task.deadline }}</td>
-                    <td class="delete_task"><a href="{% url 'delete-task' task.id %}">&#215;</a></td>
-                </tr>
+            <div class="task-title">
+                <div class="complete"><a href="{% url 'edit-task' task.id %}">&#10003;</a></div>
+                <i><s><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></s></i>
+            </div>
             {% else %}
-                <tr>
-                    <td class="incomplete"><a href="{% url 'edit-task' task.id %}">&#187;</a></td>
-                    <td><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></td>
-                    <td>{{ task.deadline|timeuntil }}</td>
-                    <td class="delete_task"><a href="{% url 'delete-task' task.id %}">&#215;</a></td>
-                </tr>
+            <div class="task-title">
+                <div class="incomplete"><a href="{% url 'edit-task' task.id %}">&#187;</a></div>
+                <a href="{% url 'detail-task' task.id %}">{{ task.title }}</a>
+            </div>
             {% endif %}
+            <div style="justify-content: space-between">
+                {{ task.deadline|timeuntil }}
+                <a class="delete-task" href="{% url 'delete-task' task.id %}">&#215;</a>
+            </div>
+        </div>
         {% empty %}
             <h3>Empty list</h3>
         {% endfor %}
-    </table>
+    </div>
 
 {% endblock content %}
