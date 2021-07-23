@@ -2,12 +2,15 @@
 {% block content %}
      <div class="header-bar">
         <h2>Delete User</h2>
-        <p><a href="{% url 'index' %}">Home Page</a></p>
+        <p><a href="{% url 'index' %}">Go Back</a></p>
     </div>
 
-    <form method="post">
+    <div class="form-body">
+        <form method="post">
         {% csrf_token %}
         <h3>{{ request.user|title }}, are you sure that you want to <b style="color: crimson"> delete your profile with all tasks?</b></h3>
-        <input type="submit" value="Delete my profile">
-    </form>
+        <input class="button" type="submit" value="DELETE MY PROFILE">
+        </form>
+    </div>
+
 {% endblock content %}

@@ -5,9 +5,12 @@
          <p><a href="{% url 'tasks' %}">Go Back</a></p>
     </div>
 
-    <h4>{{ task.title }}</h4>
-    <p>{{ task.description }}</p>
+    <div class="form-body">
+        <h4>{{ task.title }}</h4>
+        <p>{{ task.description }}</p>
 
-    <a href="{% url 'edit-task' task.id %}">Edit Task</a>
-    <a href="{% url 'delete-task' task.id %}">Delete Task</a>
+        <a class="form-link" href="{% url 'edit-task' task.id %}">Edit Task</a>
+        <a class="form-link" style="margin-left: 20px" href="{% url 'delete-task' task.id %}">Delete Task</a>
+    </div>
+
 {% endblock content %}

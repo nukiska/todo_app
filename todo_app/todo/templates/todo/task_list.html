@@ -5,7 +5,7 @@
     <div class="header-bar">
         <div>
             <h2>{{ request.user|title }}'s Task List</h2>
-            <h3>Contains <b style="color: crimson">{{ count }}</b> incomplete task{{ count|pluralize:"s" }}</h3>
+            <h3 style="color: steelblue">Contains <b style="color: crimson">{{ count }}</b> incomplete task{{ count|pluralize:"s" }}</h3>
         </div>
         <div style="text-align: right">
             <p><a href="{% url 'index' %}">Home Page</a></p>
@@ -16,7 +16,7 @@
     <div id="search-add-wrapper">
         <form method="get" style="margin-top:10px; display:flex;">
             <input type="text" name="searchbar" placeholder="Search task...">
-            <input type="submit" value="Search">
+            <input class="button" type="submit" value="Search">
         </form>
         <a id="add-task" href="{% url 'create-task' %}">&#43;</a>
     </div>
@@ -35,7 +35,7 @@
                 <a href="{% url 'detail-task' task.id %}">{{ task.title }}</a>
             </div>
             {% endif %}
-            <div style="justify-content: space-between">
+            <div>
                 {{ task.deadline|timeuntil }}
                 <a class="delete-task" href="{% url 'delete-task' task.id %}">&#215;</a>
             </div>

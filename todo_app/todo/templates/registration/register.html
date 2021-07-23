@@ -5,11 +5,22 @@
         <p><a href="{% url 'index' %}">Home Page</a></p>
     </div>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Register">
-    </form>
+    <div class="form-body">
+        <form method="post">
+            {% csrf_token %}
 
-    <p>Already have an account? <a href="{% url 'login'%}">Login</a></p>
+            <label style="margin-top: 15px">{{ form.username.label }}</label>
+            {{ form.username }}
+
+            <label style="margin-top: 15px">{{ form.password1.label }}</label>
+            {{ form.password1 }}
+
+            <label style="margin-top: 15px">{{ form.password2.label }}</label>
+            {{ form.password2 }}
+
+            <p><input class="button" type="submit" value="Register"></p>
+        </form>
+        <p>Already have an account? <a class="form-link" href="{% url 'login'%}">Login</a></p>
+    </div>
+
 {% endblock content %}
