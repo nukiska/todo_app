@@ -147,9 +147,19 @@
     </section>
 
     <div class="footer-bar">
-            <h4 style="margin-top: 0"><a href="{% url 'index' %}">&#8594; Back to top</a></h4>
+            <h4 style="margin-top: 0">
+                <a onclick="topFunction()" id="myLink">&#8594; Back to top</a>
+            </h4>
     </div>
         {% endif %}
 
+    <script>
+        var mylink = document.getElementById("myLink");
+
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+    </script>
 {% endblock content %}
 
