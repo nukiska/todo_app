@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 
 from .models import Task
+from .widgets import DatePickerWidget
 
 
 class HomePageView(TemplateView):
@@ -35,6 +36,11 @@ class TaskCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
 
+    def get_form(self):
+        form = super(TaskCreate, self).get_form()
+        form.fields['deadline'].widget = DatePickerWidget()
+        return form
+
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
@@ -57,6 +63,11 @@ class TaskEdit(LoginRequiredMixin, UpdateView):
         if task.user != self.request.user:
             raise http.Http404
         return task
+
+    def get_form(self):
+        form = super(TaskEdit, self).get_form()
+        form.fields['deadline'].widget = DatePickerWidget()
+        return form
 
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
