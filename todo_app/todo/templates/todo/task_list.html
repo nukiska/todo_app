@@ -29,16 +29,20 @@
                 <div class="complete"><a href="{% url 'edit-task' task.id %}">&#10003;</a></div>
                 <i><s><a href="{% url 'detail-task' task.id %}">{{ task.title }}</a></s></i>
             </div>
+            <div>
+                <a class="delete-task" href="{% url 'delete-task' task.id %}">&#215;</a>
+            </div>
             {% else %}
             <div class="task-title">
                 <div class="incomplete"><a href="{% url 'edit-task' task.id %}">&#187;</a></div>
                 <a href="{% url 'detail-task' task.id %}">{{ task.title }}</a>
             </div>
-            {% endif %}
             <div>
                 {{ task.deadline|timeuntil }}
                 <a class="delete-task" href="{% url 'delete-task' task.id %}">&#215;</a>
             </div>
+            {% endif %}
+
         </div>
         {% empty %}
             <h3>Empty list</h3>
