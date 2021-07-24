@@ -5,10 +5,29 @@
         <p><a href="{% url 'tasks' %}">Go Back</a></p>
     </div>
 
-    <form method="post">
-        {% csrf_token %}
-        <p>Are you sure that you want to delete this task?</p>
-        <h4>{{ task }}</h4>
-        <input class="button" type="submit" value="Delete task">
-    </form>
+    <div class="form-body">
+        <h4>{{ task.title }}</h4>
+        <h5>{{ task.description }}</h5>
+
+        {% if task.completed %}
+        <p style="color: limegreen"><b>COMPLETE</b></p>
+        {% else %}
+        <p style="color: crimson"><b>INCOMPLETE</b></p>
+        {% endif %}
+
+        <p>Created: <b>{{ task.created }}</b></p>
+
+        {% if task.deadline == None %}
+        <p>Deadline: <i style="color: steelblue">not specified</i></p>
+        {% else %}
+        <p>Deadline: <b>{{ task.deadline }}</b></p>
+        <p>Time remaining: <b>{{ task.deadline|timeuntil }}</b></p>
+        {% endif %}
+
+        <div style="margin-top:40px; display: flex; justify-content: space-between">
+            <h4 style="margin: 0">Are you sure that you want to delete this task?</h4>
+            <input class="button" type="submit" value="Delete task">
+        </div>
+    </div>
+
 {% endblock content %}

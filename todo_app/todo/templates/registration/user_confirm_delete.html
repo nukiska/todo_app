@@ -8,8 +8,9 @@
     <div class="form-body">
         <form method="post">
         {% csrf_token %}
-        <h3>{{ request.user|title }}, are you sure that you want to <b style="color: crimson"> delete your profile with all tasks?</b></h3>
-        <input class="button" type="submit" value="DELETE MY PROFILE">
+            <h3>{{ request.user|title }},</h3>
+            <h3>are you sure that you want to <b style="color: crimson"> delete your profile with all tasks?</b></h3>
+        <input class="button-user-delete" type="submit" value="DELETE MY PROFILE">
         </form>
     </div>
 
