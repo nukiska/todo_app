@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+     <div class="header-bar">
+        <h2>App Gallery</h2>
+         <p><a href="{% url 'index' %}">Home Page</a></p>
+    </div>
+
+    <div class="form-body">
+        <p style="text-align: center; font-weight: bold">Hello!<br>If you don't want to register and log in to try the application,<br>you can view the gallery.</p>
+        {% load static %}
+        <div class="gallery">
+            <div class="image">
+                <img src="{% static 'user_home_page.png' %}" alt="Home Page screenshot" width="600" height="400">
+            </div>
+        </div>
+        <div class="gallery">
+            <div class="image">
+                <img src="{% static 'task_list.png' %}" alt="Task List screenshot" width="600" height="400">
+            </div>
+        </div>
+        <div class="gallery">
+            <div class="image">
+              <img src="{% static 'create_task.png' %}" alt="Create Task screenshot" width="600" height="400">
+          </div>
+        </div>
+        <div class="gallery">
+            <div class="image">
+              <img src="{% static 'delete_task.png' %}" alt="Delete Task screenshot" width="600" height="400">
+          </div>
+        </div>
+        <div class="gallery">
+            <div class="image">
+              <img src="{% static 'task_detail.png' %}" alt="Task Detail screenshot" width="600" height="400">
+          </div>
+        </div>
+        <div class="gallery">
+            <div class="image">
+              <img src="{% static 'search_bar.png' %}" alt="Search screenshot" width="600" height="400">
+          </div>
+        </div>
+        <div class="gallery">
+          <div class="image">
+              <img src="{% static 'delete_user.png' %}" alt="Delete User screenshot" width="600" height="400">
+          </div>
+        </div>
+    </div>
+
+    <div class="footer-bar">
+            <h4 style="margin-top: 0">
+                <a onclick="topFunction()" id="myLink">&#8594; Back to top</a>
+            </h4>
+    </div>
+
+    <script>
+        let mylink = document.getElementById("myLink");
+
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+    </script>
+{% endblock %}

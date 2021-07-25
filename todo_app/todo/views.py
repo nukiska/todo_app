@@ -11,6 +11,10 @@ class HomePageView(TemplateView):
     template_name = 'index.html'
 
 
+class AppGalleryView(TemplateView):
+    template_name = 'todo/app_gallery.html'
+
+
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'

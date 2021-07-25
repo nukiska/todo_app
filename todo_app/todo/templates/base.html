@@ -287,13 +287,31 @@
             font-size: 60px;
             text-shadow: 1px 1px steelblue;
         }
+
+        div.image {
+            border: 1px solid lightsteelblue;
+        }
+
+        div.image img {
+            width: 100%;
+            height: auto;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .gallery {
+            width: 80%;
+            margin: 30px 10%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         {% block content %}
 
-        {% endblock content %}
+        {% endblock %}
     </div>
 </body>
 </html>

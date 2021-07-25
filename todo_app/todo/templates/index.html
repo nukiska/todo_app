@@ -16,9 +16,10 @@
                 </p>
             </div>
         {% else %}
-            </div>
+        <a href="{% url 'app-gallery' %}" style="color: crimson">App Gallery</a>
+    </div>
 
-            <div style="text-align: right;">
+    <div style="text-align: right;">
                 <p><a href="{% url 'login' %}">Login</a></p>
                 <p><a href="{% url 'register-user' %}">Register</a></p>
             </div>
@@ -154,12 +155,12 @@
         {% endif %}
 
     <script>
-        var mylink = document.getElementById("myLink");
+        let mylink = document.getElementById("myLink");
 
         function topFunction() {
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
         }
     </script>
-{% endblock content %}
+{% endblock %}
 
