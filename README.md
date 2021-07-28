@@ -1,5 +1,7 @@
 #  Simple Django Task List App
 
+This app is test project for my learning and discovering Django.
+
 After **user registration**, this app allows you to **create a task** by writting the name and the description of task with the date of its completion.
 
 The task list shows the name of the created task, its status (complete, incomplete) and the **time remaining** until the deadline expires.
@@ -10,7 +12,6 @@ There is also a **search bar**.
 
 The user enters the application after **login** with his name and password, he can also **delete his profile**.
 
-This app is test project for my learning and discovering Django.
 
 ## Explore the app online ...
 
